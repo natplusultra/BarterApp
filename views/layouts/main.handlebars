@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	 <link rel="stylesheet" href="/assets/css/reset.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+	<title>BARTER APP</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header class="jumbotron">
+    	<h1>BARTER</h1>
+	</header>
+
+	<div class="container">
+		{{{ body }}}
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	<script>
+		// initializes firebase
+		var config = {
+	    	apiKey: "AIzaSyDWuWMSBzJUA2CZYSWUMkgoBSCf7n3yNVA",
+	    	authDomain: "barter-app-9fb57.firebaseapp.com",
+	    	databaseURL: "https://barter-app-9fb57.firebaseio.com",
+	    	projectId: "barter-app-9fb57",
+	    	storageBucket: "barter-app-9fb57.appspot.com",
+	    	messagingSenderId: "127264274079"
+		};
+		
+		firebase.initializeApp(config);
+	</script>
+</body>
+</html>
