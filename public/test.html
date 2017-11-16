@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	 crossorigin="anonymous">
-	 <link rel="stylesheet" href="/assets/css/reset.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+	 <link rel="stylesheet" href="./assets/css/reset.css" type="text/css">
+	<link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<title>BARTER APP</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -15,8 +16,13 @@
     	<h1>BARTER</h1>
 	</header>
 
+	<!-- login panel -->
 	<div class="container">
-		login goes here
+		<input id="txtEmail" type="email" placeholder="Email">
+		<input id="txtPassword" type="password" placeholder="Password">
+		<button id="btnLogin" class="btn btn-primary">Log In</button>
+		<button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+		<button id="btnLogOut" class="btn btn-action hide">Log Out</button>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -31,8 +37,47 @@
 	    	storageBucket: "barter-app-9fb57.appspot.com",
 	    	messagingSenderId: "127264274079"
 		};
-		
 		firebase.initializeApp(config);
+
+		// stores user inputs in variables below
+		var email = $("#txtEmail").val().trim();
+		var password = $("#txtPassword").val().trim();
+
+		// adds an event listener on click of "Log In" button
+		$("#btnLogin").on("click", function(event) {
+			event.preventDefault();
+
+			var auth = firebase.auth();
+
+			// signs in with email and password
+			var promise = auth.signInWithEmailAndPassword(email, password);
+			promise.catch(function(error) {
+				console.log(error);
+			});
+		});
+
+		// adds an event listener on click of the "Sign Up" button
+		$("#btnSignUp").on("click", function(event) {
+			event.preventDefault();
+
+			var auth = firebase.auth();
+
+			// creates new user with email and password
+			var promise = auth.createUserWithEmailAndPassword(email, password);
+			promise.catch(function(error) {
+				console.log(error);
+			});
+		});
+
+		// adds a realtime authentication listener
+		firebase.auth().onAuthStateChanged(function(firebaseUser) {
+			if (firebaseUser) {
+				console.log(firebaseUser);
+			} else {
+				console.log("Not logged in.");
+			}
+		});
+
 	</script>
 </body>
 </html>
