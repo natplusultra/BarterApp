@@ -25,7 +25,6 @@
 		<button id="btnLogOut" class="btn btn-action hide">Log Out</button>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 	<script>
 		// initializes firebase
@@ -39,42 +38,48 @@
 		};
 		firebase.initializeApp(config);
 
-		// stores user inputs in variables below
-		var email = $("#txtEmail").val().trim();
-		var password = $("#txtPassword").val().trim();
+		// get elements
+		var txtEmail = document.getElementById("txtEmail");
+		var txtPassword = document.getElementById("txtPassword");
+		var btnLogin = document.getElementById("btnLogin");
+		var btnSignUp = document.getElementById("btnSignUp");
+		var btnLogOut = document.getElementById("btnLogOut");
 
-		// adds an event listener on click of "Log In" button
-		$("#btnLogin").on("click", function(event) {
-			event.preventDefault();
-
+		// adds an event listener for "Log In" button
+		btnLogin.addEventListener("click", e => {
+			// gets the email and password
+			var email = txtEmail.value;
+			var password = txtPassword.value;
 			var auth = firebase.auth();
 
-			// signs in with email and password
 			var promise = auth.signInWithEmailAndPassword(email, password);
-			promise.catch(function(error) {
-				console.log(error);
-			});
+			promise.catch(error => console.log(error.message));
 		});
 
-		// adds an event listener on click of the "Sign Up" button
-		$("#btnSignUp").on("click", function(event) {
-			event.preventDefault();
-
+		// adds an event listener for "Sign Up" button
+		btnSignUp.addEventListener("click", e => {
+			// gets the email and password
+			var email = txtEmail.value;
+			var password = txtPassword.value;
 			var auth = firebase.auth();
 
-			// creates new user with email and password
 			var promise = auth.createUserWithEmailAndPassword(email, password);
-			promise.catch(function(error) {
-				console.log(error);
-			});
+			promise.catch(error => console.log(error.message));
+		});
+
+		// adds an event listener for "Log Out" button
+		btnLogOut.addEventListener("click", e => {
+			firebase.auth().signOut();
 		});
 
 		// adds a realtime authentication listener
-		firebase.auth().onAuthStateChanged(function(firebaseUser) {
+		firebase.auth().onAuthStateChanged(firebaseUser => {
 			if (firebaseUser) {
 				console.log(firebaseUser);
+				btnLogOut.classList.remove("hide");
 			} else {
 				console.log("Not logged in.");
+				btnLogOut.classList.add("hide");
 			}
 		});
 
