@@ -1,9 +1,9 @@
  {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": "baz2017",
+    "password": "bazapplication2017!",
     "database": "barter_db",
-    "host": "127.0.0.1",
+    "host": "plex.utubor.com",
     "dialect": "mysql"
   },
   "test": {
