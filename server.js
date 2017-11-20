@@ -5,10 +5,12 @@ var bodyParser = require("body-parser");
 
 // starts the express app
 var app = express();
-var port = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8080;
 
 // serves static content for the app from the "public" directory 
 app.use(express.static("public"));
+
+var db = require("./models");
 
 // sets up the express app to handle data parsing
 app.use(bodyParser.json());
@@ -20,10 +22,13 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// imports routes and give the server access to them
-// var routes = require("./controllers/barter_controller.js");
-// app.use("/", routes);
+require("./routes/service-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
-app.listen(port, function() {
-  console.log("App listening on PORT: " + port);
+
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
