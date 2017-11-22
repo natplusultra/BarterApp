@@ -15,7 +15,7 @@ module.exports = function(app) {
   // index route loads view.html
   app.get("/", function(req, res) {
     var hbsObject = {};
-    res.render("../views/index", hbsObject);
+    res.render("../views/home", hbsObject);
   });
 
   app.get("/postlogin", function(req, res) {
