@@ -20,7 +20,10 @@ $(document).ready(function() {
     if (user) {
       console.log("logged in");
       console.log(user)
+      console.log(user.uid)
+      checkUser(user.uid);
       notLoggedIn();
+      //window.location.href = "/dashboard.html";
     } else {
       console.log("not logged in");
       notLoggedIn();
@@ -43,11 +46,13 @@ $(document).ready(function() {
     });
   })
 
-  function redirect(){
-    $.get("/postlogin", userObject)
-        .done(function(data){
-            console.log(data)
+
+  function checkUser (firebase_uid){
+    $.get("/api/users/firebase/" + firebase_uid, function(data) {
+      console.log(data);
     });
+ 
+
   }
 
   function notLoggedIn() {
@@ -87,6 +92,7 @@ $(document).ready(function() {
         $.post("/api/users", userObject)
         .done(function(data){
             console.log(data)
+            window.location.href = "/dashboard.html";
           });
 
         //If the we can find the user in the json, we send an object back
