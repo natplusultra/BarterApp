@@ -14,12 +14,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     location: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     image: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
   });
