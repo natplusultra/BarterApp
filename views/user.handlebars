@@ -1,57 +1,39 @@
 
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<img src="{{dataValues.image}}" width="90%">
+		</div>
 
+		<div class="col-md-8">
+			<h1>{{dataValues.name}}</h1> <!-- user name -->
+			<h3>{{data.dataValues.location}}</h3> <!-- user location -->
+			<br>
+			<br>
+			<h4>About</h4>
 
-<head>
-  
-    <title>User Profile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+			<p>{{data.dataValues.description}}</p>
 
-</head>
-
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<img src="{{dataValues.image}}" width="90%">
+			<br>
+			<h4>Services</h4>
+			<div class="servicesDiv">
+				{{#each Services}}
+					<div class="col-sm-3">
+				        <div class="card">
+				          	<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
+				          	<div class="card-block">
+				          		<p class="card-text"><strong>{{this.title}}</strong></p>
+				            	<p class="card-text">{{this.description}}</p>
+				          	</div>
+				        </div>
+				    </div> 
+				{{/each}}   
 			</div>
-
-			<div class="col-md-8">
-				<h1>{{dataValues.name}}</h1> <!-- user name -->
-				<h3>{{data.dataValues.location}}</h3> <!-- user location -->
-				<br>
-				<br>
-				<h4>About</h4>
-
-				<p>{{data.dataValues.description}}</p>
-
-				<h4>Services</h4>
-				<div class="servicesDiv">
-					{{#each Services}}
-						<div class="col-sm-3">
-					        <div class="card">
-					          	<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
-					          	<div class="card-block">
-					          		<p class="card-text"><strong>{{this.title}}</strong></p>
-					            	<p class="card-text">{{this.description}}</p>
-					          	</div>
-					        </div>
-					    </div> 
-					{{/each}}   
-				</div>
-				
-				<!-- Contact Button -->
-				<button type="button" class="btn btn-default">Contact</button>
-				<a class="btn btn-default" href="/service">Add a Service</a>
-			</div>
+			
+			<!-- Contact Button -->
+			<button type="button" class="btn btn-default">Contact</button>
+			<a class="btn btn-default" href="/service">Add a Service</a>
 		</div>
 	</div>
+</div>
 	
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
