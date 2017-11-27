@@ -22,9 +22,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-require("./routes/service-api-routes.js")(app);
-require("./routes/user-api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+require("./controllers/service-api-routes.js")(app);
+require("./controllers/user-api-routes.js")(app);
+require("./controllers/html-routes.js")(app);
 
 
 db.sequelize.sync().then(function() {
