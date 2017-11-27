@@ -5,7 +5,6 @@
 // Dependencies
 // =============================================================
 var path = require("path");
-var db = require("../models");
 
 // Routes
 // =============================================================
@@ -19,33 +18,9 @@ module.exports = function(app) {
     res.render("../views/home", hbsObject);
   });
 
-
   app.get("/postlogin", function(req, res) {
     var hbsObject = {};
-    res.render("../views/user", hbsObject);
-  });
-
-  app.get("/user", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/user.html"));
-  });
-
-  app.get("/user/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    db.User.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.Service]
-    }).then(function(data) {
-      var hbsObject = {
-        data: data
-      };
-
-      console.log(data);
-      console.log("-------------------------------------")
-
-      res.render("../views/user", data);
-    });
+    res.render("../views/index2", hbsObject);
   });
 
   // // cms route loads cms.html

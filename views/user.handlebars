@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 
-
+<html>
 
 <head>
   
@@ -14,25 +15,25 @@
 
 </head>
 
+<body>
 	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<img src="{{dataValues.image}}" width="90%">
+				<img src="{{User.image}}" width="90%">
 			</div>
 
 			<div class="col-md-8">
-				<h1>{{dataValues.name}}</h1> <!-- user name -->
-				<h3>{{data.dataValues.location}}</h3> <!-- user location -->
+				<h1>{{User.name}}</h1> <!-- user name -->
+				<h3>{{User.location}}</h3> <!-- user location -->
 				<br>
 				<br>
 				<h4>About</h4>
-
-				<p>{{data.dataValues.description}}</p>
+				<p>{{User.description}}</p>
 
 				<h4>Services</h4>
 				<div class="servicesDiv">
-					{{#each Services}}
+					{{#each Service}}
 						<div class="col-sm-3">
 					        <div class="card">
 					          	<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
@@ -54,3 +55,7 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,9 +1,17 @@
+/* All Pages */
+body {
+  color: 484848;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Landing */
 #baz-header {
   color: #ff5a5f;
 }
 
 #shadow {
-  -moz-box-shadow: 0px 3px 3px 3px #ccc;
-  -webkit-box-shadow: 0px 3px 3px 3px #ccc;
-  box-shadow: 0px 3px 3px 3px #ccc;
+  -moz-box-shadow: 0px 2px 2px 2px #ccc;
+  -webkit-box-shadow: 0px 2px 2px 2px #ccc;
+  box-shadow: 0px 2px 2px 2px #ccc;
 }
