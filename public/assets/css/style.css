@@ -1,0 +1,9 @@
+#baz-header {
+  color: #ff5a5f;
+}
+
+#shadow {
+  -moz-box-shadow: 0px 3px 3px 3px #ccc;
+  -webkit-box-shadow: 0px 3px 3px 3px #ccc;
+  box-shadow: 0px 3px 3px 3px #ccc;
+}

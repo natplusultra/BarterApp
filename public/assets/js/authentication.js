@@ -49,10 +49,10 @@ $(document).ready(function() {
 
   function checkUser (firebase_uid){
     $.get("/api/users/firebase/" + firebase_uid, function(data) {
-      console.log(data);
-    });
- 
 
+      $("#name").text(data.name);
+      $("#btnGoogle").text(data.name);
+    });
   }
 
   function notLoggedIn() {
@@ -91,8 +91,9 @@ $(document).ready(function() {
         // access to all the existing users.
         $.post("/api/users", userObject)
         .done(function(data){
+            localStorage.setItem("userid", data.id);
             console.log(data)
-            window.location.href = "/dashboard.html";
+            //window.location.href = "/index2";
           });
 
         //If the we can find the user in the json, we send an object back
