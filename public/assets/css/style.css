@@ -31,5 +31,12 @@
 }
 
 .card-title {
-	background-color: #f3f3f3;
+	color: white;
+	background-color: #808284;
+}
+
+.btn {
+	color: white;
+	background-color: #ff5a5f;
+	border-color: #ff5a5f;
 }
