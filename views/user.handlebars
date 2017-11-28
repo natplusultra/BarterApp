@@ -29,45 +29,41 @@
 		<div class="row">
 			<div class="col-md-4">
 				<img src="{{dataValues.image}}" width="90%">
-
 			</div>
 
 			<div class="col-md-8">
 				<h1>{{dataValues.name}}</h1> <!-- user name -->
-				<h3>{{data.dataValues.location}}</h3> <!-- user location -->
+				<h3>{{dataValues.location}}</h3> <!-- user location -->
 				<br>
 				<br>
 				<h4>About</h4>
-				<p>{{data.dataValues.description}}</p>
-				<br>
-				<br>
+
+				<p>{{dataValues.description}}</p>
+
 				<h4>Services</h4>
 				<div class="servicesDiv">
 					{{#each Services}}
-					<div class="col-sm-4">
-				        <div class="card">
-				        	<a href="/product/{{this.id}}">
-				          		<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
-				          	</a>
-				          	<div class="card-block">
-				          		<p class="card-text card-title text-center"><strong>{{this.title}}</strong></p>
-				            	<p class="card-text card-desc">{{this.description}}</p>
-				            </div>
-				        </div>
-				    </div>
-				    {{/each}} 
-				</div> 
+						<div class="col-sm-3">
+					        <div class="card">
+					        	<a href="/product/{{this.id}}">
+					          		<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
+					          		<div class="card-block">
+					          	</a>
+					          		<p class="card-text"><strong>{{this.title}}</strong></p>
+					            	<p class="card-text">{{this.description}}</p>
+					            	
+					          	</div>
+					        </div>
+					    </div> 
+					{{/each}}   
+				</div>
+				
+				
+				<a class="btn btn-default" href="/service">Add a Service</a>
+				<a class="btn btn-default" href="/update-user">Update Account Information</a>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-8">
-				<a class="btn btn-default addServiceBtn" href="/service">Add a Service</a>
-			</div>
-			
 		</div>
 	</div>
-
 
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
