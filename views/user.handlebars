@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="col-md-8">
-				<h1>{{dataValues.name}}</h1> <!-- user name -->
+				<h1 class="userName">{{dataValues.name}}</h1> <!-- user name -->
 				<h3>{{dataValues.location}}</h3> <!-- user location -->
 				<br>
 				<br>
@@ -43,7 +43,7 @@
 				<h4>Services</h4>
 				<div class="servicesDiv">
 					{{#each Services}}
-						<div class="col-sm-3">
+						<div class="col-sm-4">
 					        <div class="card">
 					        	<a href="/product/{{this.id}}">
 					          		<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>

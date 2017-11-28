@@ -1,4 +1,4 @@
-#baz-header {
+#baz-header, .userName, .productName {
   color: #ff5a5f;
 }
 
