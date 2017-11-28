@@ -37,9 +37,9 @@
 				<br>
 				<br>
 				<h4>About</h4>
-
 				<p>{{dataValues.description}}</p>
-
+				<br>
+				<br>
 				<h4>Services</h4>
 				<div class="servicesDiv">
 					{{#each Services}}
@@ -47,23 +47,26 @@
 					        <div class="card">
 					        	<a href="/product/{{this.id}}">
 					          		<img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
-					          		<div class="card-block">
 					          	</a>
-					          		<p class="card-text"><strong>{{this.title}}</strong></p>
-					            	<p class="card-text">{{this.description}}</p>
-					            	
-					          	</div>
+					          	<div class="card-block">
+					          		<p class="card-text card-title text-center"><strong>{{this.title}}</strong></p>
+					            	<p class="card-text card-desc">{{this.description}}</p>
+					            </div>
 					        </div>
-					    </div> 
-					{{/each}}   
-				</div>
-				
-				
+					    </div>
+					{{/each}} 
+				</div>   
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
 				<a class="btn btn-default" href="/service">Add a Service</a>
 				<a class="btn btn-default" href="/update-user">Update Account Information</a>
 			</div>
 		</div>
 	</div>
+
 
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
