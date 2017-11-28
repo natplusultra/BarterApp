@@ -1,9 +1,3 @@
-// NOTE: hey guys, all of this is the authentication code.
-//it basically gives us access to the users name, email, photo,
-//and unique google id.
-// in addition to that, it also stores this data in local storage
-// and clears it on sign out.
-
 $(document).ready(function() {
   var config = {
         apiKey: "AIzaSyDWuWMSBzJUA2CZYSWUMkgoBSCf7n3yNVA",
@@ -19,11 +13,11 @@ $(document).ready(function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       console.log("logged in");
-      console.log(user)
-      console.log(user.uid)
-      checkUser(user.uid);
-      notLoggedIn();
-      //window.location.href = "/dashboard.html";
+      $("#btnGoogle").text(localStorage.name);
+      $("#btnGoogle").removeClass('loginButton');
+      $("#btnGoogle").addClass('userButton');
+      checkUser(localStorage.guid);
+      $("#btnGoogle").attr('href', '/user/'+localStorage.userid);
     } else {
       console.log("not logged in");
       notLoggedIn();
@@ -49,14 +43,22 @@ $(document).ready(function() {
 
   function checkUser (firebase_uid){
     $.get("/api/users/firebase/" + firebase_uid, function(data) {
+      if (data === null){
+        $.post("/api/users", userObject)
+        .done(function(data){
+            localStorage.setItem("userid", data.id);
+            console.log(data)
+            //window.location.href = "/index2";
+        });
+      }else{
+        localStorage.setItem("userid", data.id);
+      }
 
-      $("#name").text(data.name);
-      $("#btnGoogle").text(data.name);
     });
   }
 
   function notLoggedIn() {
-    $("#btnGoogle").on('click', function() {
+    $(document).on('click', '.loginButton', function() {
 
       firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -76,8 +78,6 @@ $(document).ready(function() {
         localStorage.setItem("email", user.email);
 
         console.log(localStorage.name);
-        // $("#user_name").text(localStorage.name);
-        // $("#display_picture").src(localStorage.photoURL);
 
         var userObject = {
           firebase_uuid : user.uid,
@@ -85,22 +85,8 @@ $(document).ready(function() {
           email: user.email,
           image : user.photoURL
         };
-        console.log(userObject);
-        //Checks for user in database
-        // NOTE: We'll probably be using a $.get here so that we can get
-        // access to all the existing users.
-        $.post("/api/users", userObject)
-        .done(function(data){
-            localStorage.setItem("userid", data.id);
-            console.log(data)
-            //window.location.href = "/index2";
-          });
 
-        //If the we can find the user in the json, we send an object back
-        //with the new users cred.
-
-        //otherwise, if the user exists, we display their homepage, with a
-        //$.get to their id's data
+        checkUser(firebase_uuid);
 
       }).catch(function(error) {
         var errorCode = error.code;

@@ -29,6 +29,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/user.html"));
   });
 
+    app.get("/service", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/serviceadd.html"));
+  });
+
   app.get("/user/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
     db.User.findOne({
@@ -40,10 +44,6 @@ module.exports = function(app) {
       var hbsObject = {
         data: data
       };
-
-      console.log(data);
-      console.log("-------------------------------------")
-
       res.render("../views/user", data);
     });
   });
