@@ -1,0 +1,85 @@
+
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<body>
+	<div class="container ">
+		<div class="row top-30">
+      <div class="col-md-2 col-sm-2">
+        <a class="btn btn-default" href="/">Go to Home Page</a>
+      </div>
+    </div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form id="cms">
+					<div class="form-group">
+						<label for="title">Name:</label>
+						<input placeholder="First Last" type="text" class="form-control" id="name">
+						<br />
+						<label for="title">Location (City, State):</label>
+						<input placeholder="City, State" type="text" class="form-control" id="location">
+						<br />
+						<label for="title">Image URL:</label>
+						<input placeholder="http link to your picture" type="text" class="form-control" id="image">
+						<br />
+						<label for="title">Email Address:</label>
+						<input placeholder="Email Address" type="text" class="form-control" id="email">
+						<br />
+						<label for="body">Description of Yourself:</label>
+						<textarea placeholder="A quick description of yourself." class="form-control" rows="10" id="description"></textarea>
+						<br />
+						
+						<button type="submit" class="btn btn-success submit" id="submitButton">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Custom Script -->
+	<script>
+		  	function getUserData() {
+			    var queryUrl ="/api/users/" + localStorage.userid;
+
+				$.get(queryUrl, function(data) {
+
+			        console.log(data);
+			        console.log(data.name);
+			        // If this post exists, prefill our cms forms with its data
+			        $("#name").val(data.name);
+			        $("#location").val(data.location);
+			        $("#image").val(data.image);
+			        $("#email").val(data.email);
+			        $("#description").val(data.description);
+			    });
+		  	}
+		  	function updateUser(user) {
+			    $.ajax({
+			      method: "PUT",
+			      url: "/api/users",
+			      data: user
+			    })
+			    .done(function() {
+			      window.location.href = "/user/" + localStorage.userid;
+			    });
+			 }
+
+		  	getUserData();		
+
+		$("#submitButton").on("click", function(){
+			event.preventDefault()
+			var user = {
+				id: localStorage.userid,
+   				name: $("#name").val(),
+   				location: $("#location").val(),
+   				image: $("#image").val(),
+   				email: $("#email").val(),
+   				description: $("#description").val()
+   			}
+			updateUser(user);
+
+ 		})
+	</script>
+
+</body>
