@@ -14,4 +14,22 @@
 
 .nav-link {
 	color: white;
+	margin-right: 20px;
+}
+
+.container {
+	background-color: #fafafa;
+	padding: 70px;
+}
+
+.card-block {
+	padding: 12px;
+}
+
+.addServiceBtn {
+	margin-top: 20px;
+}
+
+.card-title {
+	background-color: #f3f3f3;
 }
