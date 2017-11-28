@@ -1,8 +1,7 @@
-
 <div class="container">
   <h1 id="baz-header">Baz Market</h1>
-  <h3>Trade your talents</h3>
-    <!-- Search Bar -->
+  <h3>Trade your Talents</h3>
+  <!-- Search Bar -->
   <div class="form-group">
     <label for=""></label>
     <input type="text" id="shadow" class="form-control" name="" id="search-input" aria-describedby="helpId" placeholder='Try "Salsa Dancing"'>
@@ -14,38 +13,19 @@
 
   <!-- Explore -->
   <div class="row">
+    {{#each Services}}
     <div class="col-sm-3">
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
         <div class="card-block">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">
+            <strong>{{this.title}}</strong>
+          </p>
+          <p class="card-text">
+            <strong>{{this.description}}</strong>
+          </p>
         </div>
       </div>
     </div>
-    <div class="col-sm-3">
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-block">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-block">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card">
-        <img class="card-img-top" src="{{image}}" alt="Card image cap">
-        <div class="card-block">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-    </div>
+    {{/each}}
   </div>
-</div>
-  
