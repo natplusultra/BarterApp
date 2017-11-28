@@ -19,15 +19,9 @@ module.exports = function(app) {
     res.render("../views/home", hbsObject);
   });
 
-
-  app.get("/postlogin", function(req, res) {
-    var hbsObject = {};
-    res.render("../views/user", hbsObject);
-  });
-
-  app.get("/user", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/user.html"));
-  });
+  // app.get("/user", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/user.html"));
+  // });
 
     app.get("/service", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/serviceadd.html"));
