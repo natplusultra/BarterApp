@@ -8,7 +8,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/users/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
+    // We use this route to grab a specific user information.
     db.User.findOne({
       where: {
         id: req.params.id
@@ -34,11 +34,24 @@ module.exports = function(app) {
 
 
   app.post("/api/users", function(req, res) {
-     // Create an Author with the data available to us in req.body
+     // API used to create a new User.
     console.log(req.body);
     db.User.create(req.body).then(function(dbUser) {
       res.json(dbUser);
     });
+  });
+
+    // PUT route for updating users
+  app.put("/api/users", function(req, res) {
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbPost) {
+        res.json(dbPost);
+      });
   });
 
   app.post("/api/users/contact", function(req, res) {
@@ -49,17 +62,16 @@ module.exports = function(app) {
 
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: req.body.serviceEmail,
-  from: req.body.email,
-  subject: 'New Message from Baz!',
-  text: req.body.message,
-  html: req.body.message,
-};
-sgMail.send(msg);
-
+// const sgMail = require('@sendgrid/mail');
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// const msg = {
+//   to: 'test@example.com',
+//   from: 'test@example.com',
+//   subject: 'Sending with SendGrid is Fun',
+//   text: 'and easy to do anywhere, even with Node.js',
+//   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+// };
+// sgMail.send(msg);
     
     res.json({type: 'success', message: 'Message sent!'});
   });

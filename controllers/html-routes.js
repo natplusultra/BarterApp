@@ -27,6 +27,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/serviceadd.html"));
   });
 
+    app.get("/update-user", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/updateuser.html"));
+  });
+
   app.get("/user/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
     db.User.findOne({
