@@ -2,6 +2,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
+// var sendgrid = require("sendgrid")(api_user, api_key);
 
 // starts the express app
 var app = express();
