@@ -11,6 +11,19 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
+ app.get('/', function(req, res) {
+    db.Service.findAll({
+      where: {
+        id: [7, 16, 14, 15]
+      }
+    }).then(function(data) {
+      var hbsObject = {
+        data: data
+      };
+      res.render('../views/home', hbsObject);
+      console.log('data', hbsObject);
+    });
+  });
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads view.html
@@ -70,6 +83,8 @@ module.exports = function(app) {
       }
     });
   });
+
+ 
 
   // // cms route loads cms.html
   // app.get("/cms", function(req, res) {

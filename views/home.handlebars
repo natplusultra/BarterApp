@@ -1,5 +1,5 @@
 <head>
-  <title>Baz</title>
+  <title>Title</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,9 +13,11 @@
 
 <body>
 
+
+
   <ul class="nav justify-content-end">
     <li class="nav-item">
-      <a class="nav-link active" href="/">Baz</a>
+      <a class="nav-link active" href="#">Baz</a>
     </li>
     <li class="nav-item">
       <a class="nav-link loginButton" id="btnGoogle" href="#">Login With Google</a>
@@ -40,52 +42,39 @@
     <br>
     <br>
     <!-- Explore -->
-    <div class="row">
+
+    <h2>Explore</h2>
+    <div class='row'></div>
+    <div class="servicesDiv">
+
+      {{#each data}}
       <div class="col-sm-3">
         <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
+          <a href='/product/{{this.id}}'>
+            <img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
+          </a>
           <div class="card-block">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text card-title text-center">
+              <strong>{{this.title}}</strong>
+            </p>
+            <p class="card-text card-desc">{{this.description}}</p>
           </div>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-block">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-block">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="{{image}}" alt="Card image cap">
-          <div class="card-block">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
+      {{/each}}
 
     </div>
-  </div>
 
 
-  <!-- container -->
+
+    <!-- container -->
 
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-    crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"></script>
