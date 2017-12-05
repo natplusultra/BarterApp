@@ -1,19 +1,8 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
-// Requiring our models
 var db = require("../models");
+const Op = require('sequelize').Op;
 
-// Routes
-// =============================================================
 module.exports = function(app) {
 
-
-  //Route for getting all the Services
   app.get("/api/services/", function(req, res) {
     db.Service.findAll({})
     .then(function(dbPost) {
@@ -21,12 +10,31 @@ module.exports = function(app) {
     });
   });
 
-
-    // POST route for saving a new Service
   app.post("/api/services", function(req, res) {
     db.Service.create(req.body).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
+ app.get('/api/services/search/:term', function(req, res) {
+    db.Service.findAll({
+      where: {
+        [Op.or]: [
+          {
+            title: {
+              [Op.like]: '%' + req.params.term + '%'
+            }
+          },
+          {
+            description: {
+              [Op.like]: '%' + req.params.term + '%'
+            }
+          }
+        ]
+      },
+      limit: 8
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };

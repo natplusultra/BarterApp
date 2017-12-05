@@ -13,8 +13,6 @@
 
 <body>
 
-
-
   <ul class="nav justify-content-end">
     <li class="nav-item">
       <a class="nav-link active" href="#">Baz</a>
@@ -34,41 +32,49 @@
     <h1 id="baz-header">Baz Market</h1>
     <h3>Trade your talents</h3>
     <form class="form-group" id="search-bar">
-      <label for=""></label>
-      <input type="text" id="shadow" class="form-control" name="" aria-describedby="helpId" placeholder='Try "Salsa Dancing"'>
+      <label for="term"></label>
+      <input type="text" id="shadow" class="form-control" name="term" aria-describedby="helpId" placeholder='Try "Coding"'>
     </form>
     <br>
     <br>
     <br>
     <br>
     <!-- Explore -->
+    <div id="explore-container">
+      <h2>Explore</h2>
+      <div class='row'></div>
+      <div class="servicesDiv">
 
-    <h2>Explore</h2>
-    <div class='row'></div>
-    <div class="servicesDiv">
-
-      {{#each data}}
-      <div class="col-sm-3">
-        <div class="card">
-          <a href='/product/{{this.id}}'>
-            <img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
-          </a>
-          <div class="card-block">
-            <p class="card-text card-title text-center">
-              <strong>{{this.title}}</strong>
-            </p>
-            <p class="card-text card-desc">{{this.description}}</p>
+        {{#each data}}
+        <div class="col-sm-3">
+          <div class="card">
+            <a href='/product/{{this.id}}'>
+              <img class="card-img-top" src="{{this.image}}" alt="Card image cap" width=90%>
+            </a>
+            <div class="card-block">
+              <p class="card-text card-title text-center">
+                <strong>{{this.title}}</strong>
+              </p>
+              <p class="card-text card-desc">{{this.description}}</p>
+            </div>
           </div>
         </div>
-      </div>
-      {{/each}}
+        {{/each}}
 
+      </div>
     </div>
 
-
+    <!-- Search -->
+    <div id="search-container" style="display:none">
+      <h1>Search results for '<span id="label-search-term"></span>'</h1>
+      <div class='row'></div>
+      <div class="servicesDiv">
+        <div id='search-results-container'>
+        </div>
+      </div>
+    </div>
 
     <!-- container -->
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, Popper.js, then Bootstrap JS -->

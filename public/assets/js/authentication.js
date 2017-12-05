@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var config = {
-        apiKey: "AIzaSyDWuWMSBzJUA2CZYSWUMkgoBSCf7n3yNVA",
-        authDomain: "barter-app-9fb57.firebaseapp.com",
-        databaseURL: "https://barter-app-9fb57.firebaseio.com",
-        projectId: "barter-app-9fb57",
-        storageBucket: "barter-app-9fb57.appspot.com",
-        messagingSenderId: "127264274079"
-    };
+    apiKey: "AIzaSyDWuWMSBzJUA2CZYSWUMkgoBSCf7n3yNVA",
+    authDomain: "barter-app-9fb57.firebaseapp.com",
+    databaseURL: "https://barter-app-9fb57.firebaseio.com",
+    projectId: "barter-app-9fb57",
+    storageBucket: "barter-app-9fb57.appspot.com",
+    messagingSenderId: "127264274079"
+  };
   firebase.initializeApp(config);
   var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -24,7 +24,6 @@ $(document).ready(function() {
     }
   });
 
-
   $("#logout_button").on("click", function(){
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
@@ -40,20 +39,18 @@ $(document).ready(function() {
     });
   })
 
-
   function checkUser (firebase_uid){
     $.get("/api/users/firebase/" + firebase_uid, function(data) {
       if (data === null){
         $.post("/api/users", userObject)
         .done(function(data){
-            localStorage.setItem("userid", data.id);
-            console.log(data)
-            //window.location.href = "/index2";
+          localStorage.setItem("userid", data.id);
+          console.log(data)
+          //window.location.href = "/index2";
         });
       }else{
         localStorage.setItem("userid", data.id);
       }
-
     });
   }
 
@@ -99,7 +96,4 @@ $(document).ready(function() {
       });
     });
   }
-
 })
-
-

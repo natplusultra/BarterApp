@@ -1,5 +1,3 @@
-
-// ref: https://bootstrapious.com/p/how-to-build-a-working-bootstrap-contact-form
 $(function () {
     // pull local storage data to get the user's name from firebase auth
     $('#form_myName').text(localStorage.getItem('name'));
@@ -11,14 +9,12 @@ $(function () {
         if (!e.isDefaultPrevented()) {
             var url = "/api/users/contact";
             console.log('msg', $('#form_message'));
-            // put form elements into a key-value pair structure. ref: https://stackoverflow.com/questions/2276463/how-can-i-get-form-data-with-javascript-jquery
+            // put form elements into a key-value pair structure. 
             var formData = data = $('#contact-form').serializeArray().reduce(function(obj, item) {
                 obj[item.name] = item.value;
                 return obj;
             }, {});
 
-            // could add firebase user's idenifier to look up email on the server-side
-            // or take the easy approach and pass all that info to node
             formData.name = localStorage.getItem('name');
             formData.email = localStorage.getItem('email');
 
@@ -29,13 +25,11 @@ $(function () {
                 data: formData,
                 success: function (data)
                 {
-                    // data = JSON object that contact.php returns
-
-                    // we recieve the type of the message: success x danger and apply it to the 
+           
                     var messageAlert = 'alert-' + data.type;
                     var messageText = data.message;
 
-                    // let's compose Bootstrap alert box HTML
+                    // Bootstrap alert box HTML
                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
                     
                     // If we have messageAlert and messageText
