@@ -7,7 +7,7 @@ module.exports = function(app) {
     pageScripts = [{ script: '/assets/js/search.js' }];
     db.Service.findAll({
       where: {
-        id: [7, 16, 14, 15]
+        id: [7, 14, 5, 15]
       }
     }).then(function(data) {
       var hbsObject = {
